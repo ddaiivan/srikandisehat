@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SrikandiSehat - Pemantauan Kanker Payudara</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    
+    <style>
+        .card {
+            @apply bg-white rounded-lg shadow-md p-6;
+        }
+        .btn {
+            @apply px-4 py-2 rounded-full font-medium transition-colors duration-200;
+        }
+        .btn-primary {
+            @apply bg-pink-600 text-white hover:bg-pink-700;
+        }
+        .nav-link {
+            @apply bg-pink-600 text-white font-bold;
+        }
+    </style>
+    <style>
+        .calendar-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute; /* Make it floating */
+            z-index: 10; /* Ensure it's on top */
+            top: 300px;  /* Adjust as needed for vertical position */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust for centering */
+            clear: both; /* Prevent floating elements interference */
+        }
+        .calendar {
+            border-collapse: collapse;
+            width: 200px; /* Smaller width */
+            max-width: 200px; /* Smaller max-width */
+            margin-bottom: 10px;
+            background-color: #f8b4c8; /* Light pink background */
+        }
+        .calendar th, .calendar td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .calendar th {
+            background-color: #f2f2f2;
+            font-weight: bold; /* Make day names bold */
+            text-align: center; /* Ensure text is centered */
+            display: table-cell; /* Explicitly set display property */
+        }
+        .sadari-day {
+            background-color: #f8c4d0; /* Light pink for SADARI days */
+        }
+        .sadari-day-highlight {
+            background-color: #ff99cc; /* Brighter pink */
+        }
+        .calendar-caption {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            width: 80%; /* Match calendar width */
+            max-width: 400px; /* Match calendar max-width */
+            margin-bottom: 10px;
+        }
+        .calendar-button {
+            padding: 5px 10px;
+            background-color: #f8b4c8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-pink-100 p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <img src="breast_cancer_logo-removebg-preview.png" alt="SrikandiSehat Logo" class="h-12">
+                <span class="text-2xl font-bold text-pink-600">SrikandiSehat</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="https://www.linkedin.com/in/daivan-febri-juan-setiya-118560236/" target="_blank" class="nav-link bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-8 px-4">
+        <!-- Hero Section -->
+        <div class="bg-gradient-to-r from-pink-100 to-pink-200 p-12 rounded-lg text-center mb-8">
+            <h1 class="text-4xl font-bold text-pink-800 mb-4">
+                Selamat Datang di SrikandiSehat
+            </h1>
+            <p class="text-xl text-pink-700 mb-6">
+                Platform pemantauan dan edukasi kanker payudara yang komprehensif
+            </p>
+            <button class="btn btn-primary inline-flex items-center gap-2 font-bold text-pink-600">
+                Created by Daivan Febri Juan Setiya
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Pengingat SADARI -->
+            <div class="card text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <div>
+                        <img src="pengingat.png" alt="Pengingat Icon" class="w-6 h-6 mr-1">
+                        <i data-lucide="bell" class="w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-xl font-bold">Pengingat SADARI</h2>
+                </div>
+                <p class="text-gray-600">
+                    Dapatkan pengingat bulanan untuk pemeriksaan payudara mandiri
+                </p>
+                <div class="flex justify-center mt-8">
+                        <a href="#" >
+                        <button id="reminderButton" class="btn bg-pink-600 text-white px-6 py-3">
+                            + Pengingat SADARI
+                        </button>
+                        </a>
+                    </div>
+            </div>
+
+            <!-- Jadwal Pemeriksaan -->
+            <div class="card text-center">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <i data-lucide="calendar" class="w-6 h-6 text-pink-600"></i>
+                    <img src="jadwal.png" alt="Jadwal Icon" class="w-6 h-6">
+                    <h2 class="text-xl font-bold">Jadwal Pemeriksaan</h2>
+                </div>
+                <p class="text-gray-600">
+                    Kelola jadwal pemeriksaan dan konsultasi dokter Anda
+                </p>
+                <div class="flex justify-center mt-8">
+                    <a href="https://www.halodoc.com/tanya-dokter" target="_blank" rel="noopener noreferrer">
+                        <button class="btn bg-pink-600 text-white px-6 py-3 flex items-center gap-2 mt-6">
+                            <i data-lucide="message-circle"></i>
+                            <span>Konsultasi Dokter</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Komunitas -->
+            <div class="card text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <img src="komunitas.png" alt="Komunitas Icon" class="w-6 h-6 mr-1">
+                    
+                    <h2 class="text-xl font-bold ml-0">Komunitas Dukungan</h2>
+                </div>
+                <p class="text-gray-600">
+                    Temukan dukungan dan terhubung dengan komunitas sesama pejuang kanker payudara
+                </p>
+                <div class="flex justify-center mt-8">
+                    <a href="https://iccc.id/community/" target="_blank" rel="noopener noreferrer">
+                        <button class="btn bg-pink-600 text-white px-6 py-3 flex items-center gap-2">
+                            <i data-lucide="users"></i>
+                            <span>Gabung Komunitas</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert -->
+        <div class="bg-pink-50 border border-pink-200 rounded-lg p-4 flex items-start gap-3 mb-8">
+            <i data-lucide="info" class="w-5 h-5 text-pink-600 mt-0.5"></i>
+            <p class="text-gray-700">
+                <strong>Pemeriksaan payudara sendiri (SADARI) adalah langkah penting dalam deteksi dini kanker payudara. 
+                Lakukan pemeriksaan secara rutin setiap bulan.</strong>
+            </p>
+        </div>
+
+        <!-- Resource Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- Artikel Edukasi -->
+            <div class="card">
+                <div class="flex items-center justify-center mb-4">
+                    <img src="edu.png" alt="Logo Artikel Edukasi" class="w-6 h-6 mr-1">
+                    <h3 class="text-xl font-bold text-center">Artikel Edukasi</h3>
+                </div>
+                <p class="text-gray-600 text-center">
+                    Baca artikel informatif seputar kanker payudara
+                </p>
+                <div class="flex justify-center mt-4">
+                    <a href="https://www.cancer.org/cancer/types/breast-cancer.html" target="_blank" rel="noopener noreferrer">
+                        <button class="btn bg-pink-600 text-white px-6 py-3 flex items-center gap-2 mt-6">
+                            <span>Baca Artikel</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video Tutorial -->
+            <div class="card">
+                <div class="flex items-center justify-center mb-4">
+                    <img src="video.png" alt="Logo Video Tutorial" class="w-6 h-6 mr-1">
+                    <h3 class="text-xl font-bold text-center">Video Tutorial</h3>
+                </div>
+                <p class="text-gray-600 text-center">
+                    Tonton video tutorial tentang SADARI dan informasi lainnya
+                </p>
+                <div class="flex justify-center mt-4">
+                    <a href="https://www.youtube.com/watch?v=nAIlxN7vMLM" target="_blank" rel="noopener noreferrer">
+                        <button class="btn bg-pink-600 text-white px-6 py-3 flex items-center gap-2">
+                            <span>Tonton Video</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Alat Bantu -->
+            <div class="card">
+                <div class="flex items-center justify-center mb-4">
+                    <img src="ai.png" alt="Logo Alat Bantu" class="w-6 h-6 mr-1">
+                    <h3 class="text-xl font-bold text-center">Alat Bantu</h3>
+                </div>
+                <p class="text-gray-600 text-center">
+                    Gunakan alat bantu untuk mempermudah pemantauan
+                </p>
+                <div class="flex justify-center mt-9">
+                    <a href="https://aistudio.google.com/u/2/live" target="_blank" rel="noopener noreferrer">
+                        <button class="btn bg-pink-600 text-white px-6 py-3 flex items-center gap-2">
+                            <span>Lihat Alat Bantu</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+ 
+                <!-- Calendar days will be generated here -->
+            </tbody>
+        </table>
+    </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-pink-100 p-4 mt-8">
+        <div class="container mx-auto text-center text-pink-700">
+            &copy; 2025 SrikandiSehat. Hak Cipta Dilindungi.
+        </div>
+    </footer>
+</body>
+</html>
