@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const reminderButton = document.getElementById('reminderButton');
     let calendarDiv = null; // Store the calendar div to show/hide
 
+    const consultationButton = document.getElementById('consultationButton');
+
     reminderButton.addEventListener('click', function() {
         if (calendarDiv) {
             // If calendar exists, toggle visibility
@@ -10,6 +12,30 @@ document.addEventListener('DOMContentLoaded', function() {
             // If calendar doesn't exist, create it
             createCalendar();
         }
+    });
+
+    consultationButton.addEventListener('click', function() {
+        document.getElementById('halodocModal').style.display = 'block';
+    });
+
+    document.getElementById('closeModal').addEventListener('click', function() {
+        document.getElementById('halodocModal').style.display = 'none';
+    });
+
+    document.getElementById('communityButton').addEventListener('click', function() {
+        document.getElementById('communityModal').style.display = 'block';
+    });
+
+    document.getElementById('closeCommunityModal').addEventListener('click', function() {
+        document.getElementById('communityModal').style.display = 'none';
+    });
+
+    document.getElementById('articleButton').addEventListener('click', function() {
+        document.getElementById('articleModal').style.display = 'block';
+    });
+
+    document.getElementById('closeArticleModal').addEventListener('click', function() {
+        document.getElementById('articleModal').style.display = 'none';
     });
 
     function createCalendar() {
@@ -33,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sadariText.appendChild(strongText);
         sadariText.classList.add('text-center', 'text-gray-700', 'mt-2'); // Add styling classes
         calendarDiv.appendChild(sadariText);
+        calendarDiv.style.display = 'block'; // Show the calendar after creation
     }
 
     function renderCalendar(month, year) {
