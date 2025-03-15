@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SrikandiSehat - Pemantauan Kanker Payudara</title>
-    
+    <link rel="icon" href="breast_cancer_logo-removebg-preview.png" type="image/png">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -238,6 +239,16 @@
                 </div>
             </div>
 
+            <!-- Modal Video -->
+            <div id="videoModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+                <div style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 800px; position: relative;">
+                    <span id="closeVideoModal" style="color: #aaa; position: absolute; top: 10px; right: 15px; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+                    <h2 style="margin-bottom: 10px;">Video Tutorial</h2>
+                    <p style="margin-bottom: 20px;">Tonton video tutorial tentang SADARI dan informasi lainnya.</p>
+                    <iframe src="https://drive.google.com/file/d/1ddocjupuEH7nsOXfkiabx_RssodbMfx0/preview" width="100%" height="500px" style="box-sizing: border-box;"></iframe>
+                </div>
+            </div>
+
 
             <!-- Video Tutorial -->
             <div class="card">
@@ -249,11 +260,11 @@
                     Tonton video tutorial tentang SADARI dan informasi lainnya
                 </p>
                 <div class="flex justify-center mt-4">
-                    <a href="https://www.youtube.com/watch?v=nAIlxN7vMLM" target="_blank" rel="noopener noreferrer">
-                        <button class="btn bg-pink-600 text-white px-6 py-3 flex items-center gap-2">
+                    
+                        <button id="videoButton" class="btn bg-pink-600 text-white px-6 py-3 flex items-center gap-2">
                             <span>Tonton Video</span>
                         </button>
-                    </a>
+                    
                 </div>
             </div>
 
@@ -269,7 +280,7 @@
                 <div class="flex justify-center mt-9">
                     <a href="https://aistudio.google.com/u/2/live" target="_blank" rel="noopener noreferrer">
                         <button class="btn bg-pink-600 text-white px-6 py-3 flex items-center gap-2">
-                            <span>Lihat Alat Bantu</span>
+                            <span>Gunakan Ai</span>
                         </button>
                     </a>
                 </div>
@@ -316,6 +327,10 @@
     <!-- Footer -->
     <footer class="bg-pink-100 p-4 mt-8">
         <div class="container mx-auto text-center text-pink-700">
+            <div class="flex justify-center gap-4 mb-4">
+                <a href="https://indeks.daivan.site/" target="_blank" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">Cegah Stunting</a>
+                <a href="https://dm2scan.daivan.site/" target="_blank" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">Cegah Diabetes</a>
+            </div>
             &copy; 2025 SrikandiSehat. Hak Cipta Dilindungi.
         </div>
     </footer>

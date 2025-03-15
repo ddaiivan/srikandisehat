@@ -38,6 +38,20 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('articleModal').style.display = 'none';
     });
 
+    const videoButton = document.getElementById('videoButton');
+    if (videoButton) {
+        videoButton.addEventListener('click', function() {
+            document.getElementById('videoModal').style.display = 'block';
+        });
+    }
+
+    const closeVideoModal = document.getElementById('closeVideoModal');
+    if (closeVideoModal) {
+        closeVideoModal.addEventListener('click', function() {
+            document.getElementById('videoModal').style.display = 'none';
+        });
+    }
+
     function createCalendar() {
         calendarDiv = document.createElement('div');
         calendarDiv.id = 'calendar';
